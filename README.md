@@ -1,6 +1,26 @@
 # CarsDotGo
 An open source reversal of all the car listing sites search APIs. Search Cars.com, Carfax, Autotrader, CarGurus, and more.
 
+## Structure
+```go
+// All clients take in an http.Client
+// You can set this client to whatever you wish, proxy, timeouts, etc.
+// YOU MUST INITIALIZE THE HTTP CLIENT WITHIN EVERY CLIENT
+
+import (
+  "https://github.com/knexguy101/CarsDotGo/cargurus"
+  "net/http"
+)
+
+func main() {
+  c := &cargurus.CarGurusClient {
+    Client: &http.Client{}
+  }
+}
+
+//READ THE TEST FILES FOR ACTUAL EXAMPLES
+```
+
 ## Site Parameters
 _Most params can be left blank, they are filled in by default values if so_
 ### Auto Trader
