@@ -1,4 +1,4 @@
-package carfax
+package autotrader
 
 type listingResponse struct {
 	Listings []Listing `json:"listings"`
