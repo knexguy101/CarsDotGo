@@ -67,10 +67,9 @@ func TestSearchCondition(t *testing.T) {
 		Client: &http.Client{},
 	}
 	listings, err := client.Search(&SearchParams{
-		StockType:       ST_NEW,
-		Zip:             "12345",
-		Models:          []string{"chevrolet-corvette"},
-		MaximumDistance: CustomMaxDistance("500"),
+		StockType: ST_ALL,
+		Zip:       "12345",
+		Models:    []string{"chevrolet-corvette"},
 	})
 	if err != nil {
 		t.Fatalf("Issue searching listings %v\n", err)
@@ -78,6 +77,6 @@ func TestSearchCondition(t *testing.T) {
 		t.Fatalf("No listings found\n")
 	}
 	fmt.Printf("Length of listings: %d\n", len(listings))
-	l := listings[rand.Intn(len(listings))]
-	fmt.Println(l.Title, l.PrimaryPrice, l.DealLabel, l.DealPrice)
+	l := listings[0]
+	fmt.Println(l.Title, l.PrimaryPrice, l.VIN)
 }

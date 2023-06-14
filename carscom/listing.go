@@ -13,6 +13,7 @@ type Listing struct {
 	MilesFrom    string
 	DealLabel    string
 	DealPrice    string
+	VIN          string
 }
 
 func ParseListings(doc *goquery.Document) []Listing {
@@ -30,6 +31,7 @@ func ParseListings(doc *goquery.Document) []Listing {
 		l.MilesFrom = selection.Find(".miles-from ").Text()
 		l.DealLabel = selection.Find(".sds-badge__label").Text()
 		l.DealPrice = selection.Find(".sds-badge--price-savings").Text()
+		l.VIN = selection.Find(".contact-by-phone").AttrOr("data-vim", "")
 
 		listings = append(listings, l)
 	})
